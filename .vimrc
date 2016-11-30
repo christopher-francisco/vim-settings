@@ -3,13 +3,15 @@ set nocompatible              				" We want the latest Vim settings
 so ~/.vim/plugins.vim
 
 syntax enable
-set backspace=indent,eol,start				" Make backspace behave normally
-let mapleader=','					" The default is \, but a comma is better
-set number						" Show line number
-set noerrorbells visualbell t_vb=			" No bells when pressing wrong key
+set backspace=indent,eol,start				" Make backspace behave normally.
+let mapleader=','					" The default is \, but a comma is better.
+set number						" Show line number.
+set noerrorbells visualbell t_vb=			" No bells when pressing wrong key.
+set autowriteall 					" Automatically write the file when switching buffers.
+set complete=.,w,b,u 					" Set our desiring autocompletion matching.
 
-set backupdir=~/.vim/backup//				" Put backup files out of the project root
-set directory=~/.vim/swap//				" Put swap files out of the project root
+set backupdir=~/.vim/backup//				" Put backup files out of the project root.
+set directory=~/.vim/swap//				" Put swap files out of the project root.
 
 
 
@@ -104,6 +106,13 @@ set grepprg=ag
 
 let g:grep_cmd_opts = '--line-numbers --noheading'	" We want to use ag for the search
 
+"/
+"/ vim-php-cs-fixer.vim
+"/
+let g:php_cs_fixer_level = "psr2"
+
+nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
+
 
 
 
@@ -115,6 +124,25 @@ augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
 augroup end
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>n <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>'
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
+
+"Sort PHP use statements
+"http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
+vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
+
 
 
 

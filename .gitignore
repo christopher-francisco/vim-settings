@@ -1,0 +1,12 @@
+.netrwhist
+
+.vim/bundle/*
+!.vim/bundle/.gitignore
+
+# Ignore all files inside backup
+.vim/backup/*
+!.vim/backup/.gitignore
+
+# Ignore all files inside swap
+.vim/swap/*
+!.vim/swap/.gitignore

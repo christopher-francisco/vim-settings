@@ -9,6 +9,10 @@ set number						" Show line number.
 set noerrorbells visualbell t_vb=			" No bells when pressing wrong key.
 set autowriteall 					" Automatically write the file when switching buffers.
 set complete=.,w,b,u 					" Set our desiring autocompletion matching.
+set tabstop=8                                           " The width of the tab key
+set expandtab                                           " Use spaces instead of tabs
+set softtabstop=4                                       " Width of indent in insert mode
+set shiftwidth=4                                        " Width of indent in normal mode
 
 set backupdir=~/.vim/backup//				" Put backup files out of the project root.
 set directory=~/.vim/swap//				" Put swap files out of the project root.
@@ -24,12 +28,13 @@ set guifont=Fira_Code:h16				" Changes the font on Macvim
 set macligatures					" We want pretty symbols, when available
 set guioptions-=e					" We don't want Gui tabs.
 set linespace=15					" Macvim line height
+set lines=999                                           " Initial size of MacVim
+set nowrap
 
-set guioptions-=l
+set guioptions-=l                                       " Disable GUI scrollbars.
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
-set guioptions-=T					" Removes top toolbar
 
 hi LineNr guibg=bg
 
@@ -41,9 +46,12 @@ hi LineNr guibg=bg
 hi vertsplit guifg=bg guibg=bg
 
 
+
+
+
 "-------------------- Search --------------------
-set hlsearch
-set incsearch
+set hlsearch                                            " Highlight all matched terms.
+set incsearch                                           " Incrementally highlight as we type.
 
 
 
@@ -73,8 +81,13 @@ nmap <Leader>es :e ~/.vim/snippets/
 " Add highlight removal
 nmap <Leader><space> :nohlsearch<cr>
 
+" Quickly browse any tag/symbol in the project.
+" Tip: run `ctags -R` to regenerate the index.
 nmap <Leader>f :tag<space>
 
+" Sort PHP use statements
+" See: http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
+vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 
 
 
@@ -85,7 +98,7 @@ nmap <Leader>f :tag<space>
 "/ CtrlP
 "/
 let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20,results:20'
 
 nmap <D-p> :CtrlP<cr>
 nmap <D-r> :CtrlPBufTag<cr>
@@ -94,7 +107,7 @@ nmap <D-e> :CtrlPMRUFiles<cr>
 "/
 "/ NerdTree
 "/
-let NERDTreeHijackNetrw = 0
+let NERDTreeHijackNetrw = 0                             " Prevent NERDTree to conflict with vinegar.vim
 
 "Make NERDTree easier to toggle.
 nmap <D-1> :NERDTreeToggle<cr>
@@ -102,9 +115,9 @@ nmap <D-1> :NERDTreeToggle<cr>
 "/
 "/ Greplace.vim
 "/
-set grepprg=ag
+set grepprg=ag                                          " Use Ag for search
 
-let g:grep_cmd_opts = '--line-numbers --noheading'	" We want to use ag for the search
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "/
 "/ vim-php-cs-fixer.vim
@@ -113,17 +126,37 @@ let g:php_cs_fixer_level = "psr2"
 
 nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
 
+"/
+"/ pdv
+"/
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+
+nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
+
+"/
+"/ Ultisnips
+"/
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
 
 
 
 "-------------------- Auto-Commands --------------------
-
 " Automatically source the .vimrc file on save
 
 augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
 augroup end
+
+
+
+
+
+"-------------------- Functions --------------------
 
 function! IPhpInsertUse()
     call PhpInsertUse()
@@ -138,10 +171,6 @@ function! IPhpExpandClass()
 endfunction
 autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
-
-"Sort PHP use statements
-"http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
-vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 
 
 

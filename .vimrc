@@ -175,8 +175,84 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 
 
 
-" Notes and Tips
+" Prerequisites
 " - Install CTags through homebrew. See https://gist.github.com/nazgob/1570678
 "   if it doens't work
-" - Press 'zz' to instatly center the line where the cursor is located.
+" - Install The Silver Searcher through Homebrew
 
+" -------------------- Notes and Tips --------------------
+
+" Command mode
+" - `:pwd` Prints current directory
+" - `:cwd [dir]` Changes current directory.
+" - `:bufdo bd!` closes all buffer
+" - `:tabn` or `:tabe` opens a new tab
+" - `:ls` list all buffers
+" - `:bd` destroy current buffer
+" - `:bd [index]` destroy buffer on index
+" - `sbuffer [index]` opens a split window with that loaded buffer
+" - `:q` closes window, but buffer is still there
+" - `:/ + ctrl + R + "` paste what was last yanked in command mode
+" - `:marks` Lists all marks.
+" - `:bp` Return to previous buffer.
+
+" Normal mode
+" - 'zz' Center the line where the cursor is located.
+" - `gt` Switche between tabs.
+" - `ctrl + ^` Return to previous buffer.
+" - `ctrl + u` Scroll half a screen upwards.
+" - `ctrl + d` Scroll half a screen downwards.
+" - `va{` Select the parentensis too.
+" - `wa` Write all files.
+" - `ctrl + w + o` Make current buffer fullscreen (from split).
+" - `J` Join the current line with the next one.
+" - `ctrl + o` Jump back.
+" - `ctrl + i` Jump forward.
+" - `.` Repeat last operation.
+" - `?` Search above the current line.
+" - `m[lower_letter]` Create a mark on the current buffer (i.e: `mm`).
+" - `m[capital_letter]` Create a mark on any file (i.e: `mM`).
+" - `'[letter]` Return to a mark.
+" - ``[letter]` Return to a mark, to the exact column.
+" - ``0` Return to your last file through a mark.
+" - `q[key]` Start recording a macro (i.e: `qq`)
+" - `q` Stop recording.
+" - `co` Open the code fold.
+
+" CtrlP
+" - `:tag [name]` Go to tag.
+" - `:tn` Navigate to next tag.
+" - `:tp` navigate to previous tag.
+" - `:ts` Select between tags.
+" - `ctrl + ]` Navigate to ctag on the selected cursor.
+
+" Ag
+" - `:Ag 'foo'` Search in the whole project.
+
+" Gsearch
+" 1. Select all lines to change.
+" 2. `>s/oldstring/newstring`.
+" 3. `Greplace`.
+" 4. `a` to accept all replacements.
+" 5. `wa` write to all files.
+
+" - Tpope Surrounidngs
+" - `cs'"` Change surrounding `'` for `"`.
+" - `ds'` Delete surrounding `'`.
+" - `dst` Delete the surrounding tag, like HTML tag.
+" - `cst` Change surrounding tag for the new input one. Supports class attribute.
+" - `S` in `visual mode` and then write tag.
+
+" PHP namespace
+" - `,n` Add a `use` statement.
+" - `,fn` Expand a class' FQNS.
+" - `,su` in `visual mode` to sort from shorter to longer.
+
+" PSR-2
+" - `fabpot/php-cs-fixer` through composer global install
+" - `,pf` to format using psr-2
+
+
+" Default OS X `Keyboard repeat` values
+" - Key repeat: 7
+" - Delay until repeat: 3

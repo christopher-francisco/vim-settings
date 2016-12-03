@@ -13,6 +13,8 @@ set tabstop=8                                           " The width of the tab k
 set expandtab                                           " Use spaces instead of tabs
 set softtabstop=4                                       " Width of indent in insert mode
 set shiftwidth=4                                        " Width of indent in normal mode
+set linespace=15                                        " Macvim line height
+set nowrap
 
 set backupdir=~/.vim/backup//				" Put backup files out of the project root.
 set directory=~/.vim/swap//				" Put swap files out of the project root.
@@ -27,10 +29,6 @@ set t_CO=256						" Use 256 colors on terminal Vim
 set guifont=Fira_Code:h16				" Changes the font on Macvim
 set macligatures					" We want pretty symbols, when available
 set guioptions-=e					" We don't want Gui tabs.
-set linespace=15					" Macvim line height
-set lines=999                                           " Initial size of MacVim
-set nowrap
-
 set guioptions-=l                                       " Disable GUI scrollbars.
 set guioptions-=L
 set guioptions-=r

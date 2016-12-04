@@ -9,6 +9,12 @@ Vim settings bassed on Jeffrey's Way "Vim Mastery" series on Laracasts.
 
 ### Installation
 
+Install Vundle
+
+```
+$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
 Create links to your home directory running the following commands:
 
 ```

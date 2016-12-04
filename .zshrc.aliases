@@ -1,0 +1,19 @@
+# Navigation
+alias code:home='cd ~/Developer/code'
+
+alias code:android='cd ~/Developer/code/android'
+alias code:chef='cd ~/Developer/code/chef'
+alias code:ios='cd ~/Developer/code/ios'
+alias code:php='cd ~/Developer/code/laravel'
+alias code:vagrant='cd ~/Developer/code/vagrant'
+
+alias code:vm='cd ~/Developer/vm'
+
+# Coding
+alias phpunit='vendor/bin/phpunit'
+alias behat='vendor/bin/behat'
+alias phpcs='vendor/bin/phpcs'
+
+alias ctags='`brew --prefix`/bin/ctags'                         # Use homebrew's CTags
+
+. ~/.zshrc.aliases.local

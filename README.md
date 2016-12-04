@@ -15,6 +15,7 @@ Create links to your home directory running the following commands:
 $ ln -s ~/code/vim/vim-settings/.vim ~/.vim
 $ ln -s ~/code/vim/vim-settings/.vimrc ~/.vimrc
 $ ln -s ~/code/vim/vim-settings/.gvimrc ~/.gvimrc
+$ ln -s ~/code/vim/vim-settings/.zshrc.aliases ~/.zshrc.aliases
 ```
 
 Open `MacVim` and run `:PluginInstall`

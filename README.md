@@ -12,10 +12,10 @@ Vim settings bassed on Jeffrey's Way "Vim Mastery" series on Laracasts.
 Create links to your home directory running the following commands:
 
 ```
-$ ln -s ~/code/vim/vim-settings/.vim ~/.vim
-$ ln -s ~/code/vim/vim-settings/.vimrc ~/.vimrc
-$ ln -s ~/code/vim/vim-settings/.gvimrc ~/.gvimrc
-$ ln -s ~/code/vim/vim-settings/.zshrc.aliases ~/.zshrc.aliases
+$ ln -s ~/Developer/code/vim/vim-settings/.vim ~/.vim
+$ ln -s ~/Developer/code/vim/vim-settings/.vimrc ~/.vimrc
+$ ln -s ~/Developer/code/vim/vim-settings/.gvimrc ~/.gvimrc
+$ ln -s ~/Developer/code/vim/vim-settings/.zshrc.aliases ~/.zshrc.aliases
 ```
 
 Open `MacVim` and run `:PluginInstall`

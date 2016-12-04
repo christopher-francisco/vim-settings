@@ -4,7 +4,7 @@ alias code:home='cd ~/Developer/code'
 alias code:android='cd ~/Developer/code/android'
 alias code:chef='cd ~/Developer/code/chef'
 alias code:ios='cd ~/Developer/code/ios'
-alias code:php='cd ~/Developer/code/laravel'
+alias code:php='cd ~/Developer/code/php'
 alias code:vagrant='cd ~/Developer/code/vagrant'
 
 alias code:vm='cd ~/Developer/vm'

@@ -14,7 +14,8 @@ set expandtab                                           " Use spaces instead of 
 set softtabstop=4                                       " Width of indent in insert mode
 set shiftwidth=4                                        " Width of indent in normal mode
 set linespace=15                                        " Macvim line height
-set nowrap
+set lines=999 columns=999                               " We want Vim in fullscreen
+set autoread                                            " Reload when changed on disk
 
 set backupdir=~/.vim/backup//				" Put backup files out of the project root.
 set directory=~/.vim/swap//				" Put swap files out of the project root.
@@ -136,6 +137,24 @@ nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"/
+"/ syntastic
+"/
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"/
+"/ syntastic
+"/
+noremap <leader>l :Align
+
 
 
 

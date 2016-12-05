@@ -27,7 +27,6 @@ colorscheme atom-dark					" Set's the theme to gosukiwi/vim-atom-dark
 
 set t_CO=256						" Use 256 colors on terminal Vim
 set guifont=Fira_Code:h16				" Changes the font on Macvim
-set macligatures					" We want pretty symbols, when available
 set guioptions-=e					" We don't want Gui tabs.
 set guioptions-=l                                       " Disable GUI scrollbars.
 set guioptions-=L
@@ -218,6 +217,12 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 " - `q[key]` Start recording a macro (i.e: `qq`)
 " - `q` Stop recording.
 " - `co` Open the code fold.
+
+" Vinegar
+" - `-` Go to current directory
+" - `%` Create a new file
+" - `d` Create a new directory
+" - `D` Delete a file or directory
 
 " CtrlP
 " - `:tag [name]` Go to tag.

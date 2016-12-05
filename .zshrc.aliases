@@ -1,3 +1,6 @@
+# Export
+export PATH=~/bin:$PATH
+
 # Navigation
 alias code:home='cd ~/Developer/code'
 

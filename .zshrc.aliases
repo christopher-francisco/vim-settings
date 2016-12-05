@@ -1,5 +1,7 @@
 # Export
 export PATH=~/bin:$PATH
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # Navigation
 alias code:home='cd ~/Developer/code'

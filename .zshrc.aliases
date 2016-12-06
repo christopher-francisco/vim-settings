@@ -2,6 +2,7 @@
 export PATH=~/bin:$PATH
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # Navigation
 alias code:home='cd ~/Developer/code'
@@ -12,7 +13,7 @@ alias code:ios='cd ~/Developer/code/ios'
 alias code:php='cd ~/Developer/code/php'
 alias code:vagrant='cd ~/Developer/code/vagrant'
 
-alias code:vm='cd ~/Developer/vm'
+alias code:vms='cd ~/Developer/vms'
 
 # Coding
 alias phpunit='vendor/bin/phpunit'

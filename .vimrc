@@ -13,6 +13,7 @@ set tabstop=8                                           " The width of the tab k
 set expandtab                                           " Use spaces instead of tabs
 set softtabstop=4                                       " Width of indent in insert mode
 set shiftwidth=4                                        " Width of indent in normal mode
+set autoindent                                          " New line keeps current indentation
 set linespace=15                                        " Macvim line height
 set lines=999 columns=999                               " We want Vim in fullscreen
 set autoread                                            " Reload when changed on disk
@@ -59,10 +60,15 @@ set incsearch                                           " Incrementally highligh
 set splitbelow						" Make splits default to below...
 set splitright						" And to the right. This feels more natural.
 
+" Allows easy movement through splits
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+
+" Let us move between wrapped lines
+nnoremap k gk
+nnoremap j gj
 
 
 
@@ -121,6 +127,7 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 "/ vim-php-cs-fixer.vim
 "/
 let g:php_cs_fixer_level = "psr2"
+let g:php_cs_fixer_verbose = 1
 
 nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
 

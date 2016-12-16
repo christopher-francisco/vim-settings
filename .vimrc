@@ -112,6 +112,7 @@ nmap <D-e> :CtrlPMRUFiles<cr>
 "/ NerdTree
 "/
 let NERDTreeHijackNetrw = 0                             " Prevent NERDTree to conflict with vinegar.vim
+let NERDTreeShowHidden = 1                              " Show hidden files
 
 "Make NERDTree easier to toggle.
 nmap <D-1> :NERDTreeToggle<cr>
@@ -158,10 +159,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "/
-"/ syntastic
+"/ Align
 "/
 noremap <leader>l :Align
-
+"
+"/
+"/ editorconfig-vim
+"/
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+let g:EditorConfig_core_mode = 'external_command'
 
 
 
@@ -204,6 +210,7 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 " - Install CTags through homebrew. See https://gist.github.com/nazgob/1570678
 "   if it doens't work
 " - Install The Silver Searcher through Homebrew
+" - Install editorconfig through Homebrew
 
 " -------------------- Notes and Tips --------------------
 

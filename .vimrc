@@ -25,7 +25,12 @@ set directory=~/.vim/swap//				" Put swap files out of the project root.
 
 
 "-------------------- Visuals --------------------
-colorscheme atom-dark					" Set's the theme to gosukiwi/vim-atom-dark
+set background=dark                                     " Set the background to dark
+if has('gui_running')
+    colorscheme atom-dark				" Set's the theme to gosukiwi/vim-atom-dark
+else
+    colorscheme solarized                               " Set the color scheme to altercation/vim-color-solarized
+endif
 
 set t_CO=256						" Use 256 colors on terminal Vim
 set guifont=Fira_Code:h16				" Changes the font on Macvim
@@ -43,6 +48,10 @@ hi LineNr guibg=bg
 
 " Get rid of ugly split borders.
 hi vertsplit guifg=bg guibg=bg
+
+" hi StatusLine guifg=bg guibg=bg
+" hi StatusLineNC guifg=bg guibg=bg
+
 
 
 
@@ -93,6 +102,15 @@ nmap <Leader>f :tag<space>
 " See: http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
 vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 
+
+" Run PHPUnit
+nmap <Leader>t :!vendor/bin/phpunit % --colors=never<cr>
+
+" Run PHPUnit on method when the cursor is on the method name
+nmap <Leader>mn yiw:!vendor/bin/phpunit --colors=never --filter "<cr>
+
+" Run PHPUnit on method when the cursor is on the method body
+nmap <Leader>m va{%k$bbyiw:!vendor/bin/phpunit --colors=never --filter "<cr>
 
 
 
@@ -157,6 +175,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_blade_checkers = []
 
 "/
 "/ Align

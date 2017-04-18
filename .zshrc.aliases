@@ -15,6 +15,9 @@ alias code:vagrant='cd ~/Developer/code/vagrant'
 
 alias code:vms='cd ~/Developer/vms'
 
+# Commands
+alias ls='ls -lh'
+
 # Coding
 alias phpunit='vendor/bin/phpunit'
 alias behat='vendor/bin/behat'

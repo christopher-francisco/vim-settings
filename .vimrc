@@ -96,6 +96,18 @@ vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr
 " Insert new line after every tag
 nmap <Leader>x :%s/\(<[^>]*>\)/\1\r/g
 
+" Change filetype to php
+nmap <Leader>fp :set ft=php<cr>
+
+" Change filetype to html
+nmap <Leader>fh :set ft=html<cr>
+
+" Write to a file faster
+nmap <Leader>w :w<cr>
+
+" Quits a window faster
+nmap <Leader>q :q<cr>
+
 
 
 
@@ -116,6 +128,7 @@ nmap <D-e> :CtrlPMRUFiles<cr>
 "/
 let NERDTreeHijackNetrw = 0                             " Prevent NERDTree to conflict with vinegar.vim
 let NERDTreeShowHidden = 1                              " Show hidden files
+let NERDTreeIgnore = ['\.DS_Store$']                    " Hide files with .DS_Store extension
 
 "Make NERDTree easier to toggle.
 nmap <D-1> :NERDTreeToggle<cr>
@@ -160,6 +173,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)

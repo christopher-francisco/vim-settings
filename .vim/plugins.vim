@@ -7,7 +7,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'SirVer/ultisnips'
-Plugin 'StanAngeloff/php.vim'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -29,6 +28,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

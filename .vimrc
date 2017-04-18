@@ -102,6 +102,9 @@ nmap <Leader>f :tag<space>
 " See: http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
 vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 
+" Insert new line after every tag
+nmap <Leader>x :%s/\(<[^>]*>\)/\1\r/g
+
 
 " Run PHPUnit
 nmap <Leader>t :!vendor/bin/phpunit % --colors=never<cr>
@@ -175,8 +178,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
 let g:syntastic_blade_checkers = []
+
+function! SyntasticCheckHook(errors)
+    if !empty(a:errors)
+        let g:syntastic_loc_list_height = min([len(a:errors), 10])
+    endif
+endfunction
 
 "/
 "/ Align
@@ -225,6 +233,7 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 
 
 
+" Put 
 
 " Prerequisites
 " - Install CTags through homebrew. See https://gist.github.com/nazgob/1570678
@@ -233,6 +242,8 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 " - Install editorconfig through Homebrew
 
 " -------------------- Notes and Tips --------------------
+"  XML
+" - `:%s/\(<[^>]*>\)/\1\r/g` to insert newline after every tag
 
 " Command mode
 " - `:pwd` Prints current directory

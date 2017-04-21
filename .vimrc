@@ -5,7 +5,7 @@ so ~/.vim/plugins.vim
 syntax enable
 set backspace=indent,eol,start				" Make backspace behave normally.
 let mapleader=','					" The default is \, but a comma is better.
-set number						" Show line number.
+" set number						" Show line number.
 set noerrorbells visualbell t_vb=			" No bells when pressing wrong key.
 set autowriteall 					" Automatically write the file when switching buffers.
 set complete=.,w,b,u 					" Set our desiring autocompletion matching.
@@ -26,32 +26,39 @@ set directory=~/.vim/swap//				" Put swap files out of the project root.
 
 "-------------------- Visuals --------------------
 set background=dark                                     " Set the background to dark
-if has('gui_running')
-    colorscheme atom-dark				" Set's the theme to gosukiwi/vim-atom-dark
-else
-    colorscheme solarized                               " Set the color scheme to altercation/vim-color-solarized
-endif
+colorscheme solarized                                   " Set the color scheme to altercation/vim-color-solarized
 
 set t_CO=256						" Use 256 colors on terminal Vim
-set guifont=Fira_Code:h16				" Changes the font on Macvim
+set guifont=Fira_Code:h14				" Changes the font on Macvim
 set guioptions-=e					" We don't want Gui tabs.
 set guioptions-=l                                       " Disable GUI scrollbars.
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 
-hi LineNr guibg=bg
+" Fake a custom left padding for each window
+set foldcolumn=2
 
-" Fake a custom left padding for each windows.
-" set foldcolumn=2
-" hi foldcolumn guibg=bg
+" Get rid of split borders on terminal vim
+" Gets rid of the horizontal bar when splitting windows
+if has("gui_running")
+    hi LineNr guibg=bg
+    hi vertsplit guifg=bg guibg=bg
+    hi foldcolumn guibg=bg
 
-" Get rid of ugly split borders.
-hi vertsplit guifg=bg guibg=bg
+    " hi StatusLine guifg=bg guibg=bg
+    " hi StatusLineNC guifg=bg guibg=bg
+else
+    hi LineNr ctermbg=bg
+    hi vertsplit ctermfg=bg ctermbg=bg
+    hi foldcolumn ctermbg=bg
 
-" hi StatusLine guifg=bg guibg=bg
-" hi StatusLineNC guifg=bg guibg=bg
+    " hi StatusLine ctermfg=bg ctermbg=bg
+    " hi StatusLineNC ctermfg=bg ctermbg=bg
+endif
 
+" Changes the `|` character on split windows
+set fillchars+=vert:\ 
 
 
 
@@ -141,6 +148,11 @@ nmap <D-p> :CtrlP<cr>
 nmap <D-r> :CtrlPBufTag<cr>
 nmap <D-e> :CtrlPMRUFiles<cr>
 
+nmap <C-a><C-e> :CtrlPMRUFiles<cr>
+nmap <C-a><C-r> :CtrlPBufTag<cr>
+
+
+
 "/
 "/ NerdTree
 "/
@@ -150,6 +162,7 @@ let NERDTreeIgnore = ['\.DS_Store$']                    " Hide files with .DS_St
 
 "Make NERDTree easier to toggle.
 nmap <D-1> :NERDTreeToggle<cr>
+nmap <C-n> :NERDTreeToggle<cr>
 
 "/
 "/ Greplace.vim
@@ -218,10 +231,11 @@ let g:EditorConfig_core_mode = 'external_command'
 "-------------------- Auto-Commands --------------------
 " Automatically source the .vimrc file on save
 
-augroup autosourcing
-	autocmd!
-	autocmd BufWritePost .vimrc source %
-augroup end
+"autocmd BufWritePost .vimrc source %
+" augroup autosourcing
+" 	autocmd!
+" 	autocmd BufWritePost .vimrc source %
+" augroup end
 
 
 
@@ -272,6 +286,7 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 " - `:/ + ctrl + R + "` paste what was last yanked in command mode
 " - `:marks` Lists all marks.
 " - `:bp` Return to previous buffer.
+" - `:wa` Write all files.
 
 " Normal mode
 " - 'zz' Center the line where the cursor is located.
@@ -280,7 +295,6 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 " - `ctrl + u` Scroll half a screen upwards.
 " - `ctrl + d` Scroll half a screen downwards.
 " - `va{` Select the parentensis too.
-" - `wa` Write all files.
 " - `ctrl + w + o` Make current buffer fullscreen (from split).
 " - `J` Join the current line with the next one.
 " - `ctrl + o` Jump back.

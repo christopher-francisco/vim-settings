@@ -118,6 +118,9 @@ nmap <Leader>fp :set ft=php<cr>
 " Change filetype to html
 nmap <Leader>fh :set ft=html<cr>
 
+" Change filetype to html
+nmap <Leader>fj :set ft=javascript<cr>
+
 " Write to a file faster
 nmap <Leader>w :w<cr>
 
@@ -190,8 +193,9 @@ nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 "/ Ultisnips
 "/
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
 "/
 "/ syntastic
@@ -202,10 +206,11 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_blade_checkers = []
+let g:syntastic_html_checkers=['']
 
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)
@@ -223,6 +228,25 @@ noremap <leader>l :Align
 "/
 let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
 let g:EditorConfig_core_mode = 'external_command'
+
+"/
+"/ vim-airline
+"/
+let g:airline#extensions#branch#enabled = 1                                                         " We want the Git branch to show
+set noshowmode                                                                                      " We don't want to show the --INSERT-- message when on insert mode
+set laststatus=2                                                                                    " We want the status bar to always appear
+let g:airline_theme='solarized'
+
+" Adds comma as thousand separator to the line number, to make them human
+" readable
+function! MyLineNumber()
+  return substitute(line('.'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g'). ' | '.
+    \    substitute(line('$'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g')
+endfunction
+
+call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bold'})
+
+let g:airline_section_z = airline#section#create(['%3p%%: ', 'linenr', ':%3v'])
 
 
 

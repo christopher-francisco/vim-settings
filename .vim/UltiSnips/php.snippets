@@ -1,3 +1,19 @@
+snippet epre "epre"
+echo "<pre>{${1}}</pre>";
+endsnippet
+
+snippet dcount "dcount"
+die("".count(${1}));
+endsnippet
+
+snippet dclass "dcount"
+die("".get_class(${1}));
+endsnippet
+
+snippet darr "darr"
+die(print_r(${1}, true));
+endsnippet
+
 snippet class "class" b
 <?php
 namespace ${1}

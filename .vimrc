@@ -15,7 +15,7 @@ set softtabstop=4                                       " Width of indent in ins
 set shiftwidth=4                                        " Width of indent in normal mode
 set autoindent                                          " New line keeps current indentation
 set linespace=15                                        " Macvim line height
-set lines=999 columns=999                               " We want Vim in fullscreen
+"set lines=999 columns=999                               " We want Vim in fullscreen
 set autoread                                            " Reload when changed on disk
 
 set backupdir=~/.vim/backup//				" Put backup files out of the project root.
@@ -35,6 +35,7 @@ set guioptions-=l                                       " Disable GUI scrollbars
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
+set guioptions+=c                                       " We want to get rid of popup bullshit
 
 " Fake a custom left padding for each window
 set foldcolumn=2
@@ -153,6 +154,9 @@ nmap <D-e> :CtrlPMRUFiles<cr>
 
 nmap <C-a><C-e> :CtrlPMRUFiles<cr>
 nmap <C-a><C-r> :CtrlPBufTag<cr>
+
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 
 
 

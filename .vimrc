@@ -93,11 +93,11 @@ nnoremap j gj
 
 "-------------------- Mappings --------------------
 " Back to normal mode from insert mode
-imap jj <esc>
+imap jk <esc>
 
 " Make it easy to edit the .vimrc file
-nmap <Leader>ev :tabedit $MYVIMRC<cr>
-nmap <Leader>es :e ~/.vim/snippets/
+nmap <Leader>v :tabedit $MYVIMRC<cr>
+nmap <Leader>s :e ~/.vim/snippets/
 
 " Add highlight removal
 nmap <Leader><space> :nohlsearch<cr>
@@ -123,14 +123,18 @@ nmap <Leader>fh :set ft=html<cr>
 nmap <Leader>fj :set ft=javascript<cr>
 
 " Write to a file faster
-nmap <Leader>w :w<cr>
+nmap <Leader>wf :w<cr>
 
 " Quits a window faster
 nmap <Leader>q :q<cr>
 
+" Saves and quit
+nmap <Leader>x :x<cr>
+
 
 " Run PHPUnit
-nmap <Leader>t :!vendor/bin/phpunit % --colors=never<cr>
+" nmap <Leader>t :!vendor/bin/phpunit % --colors=never<cr>
+nmap <Leader>tr :!vendor/bin/phpunit<cr>
 
 " Run PHPUnit on method when the cursor is on the method name
 nmap <Leader>mn yiw:!vendor/bin/phpunit --colors=never --filter "<cr>
@@ -148,12 +152,8 @@ nmap <Leader>m va{%k$bbyiw:!vendor/bin/phpunit --colors=never --filter "<cr>
 let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20,results:20'
 
-nmap <D-p> :CtrlP<cr>
-nmap <D-r> :CtrlPBufTag<cr>
-nmap <D-e> :CtrlPMRUFiles<cr>
-
-nmap <C-a><C-e> :CtrlPMRUFiles<cr>
-nmap <C-a><C-r> :CtrlPBufTag<cr>
+nmap <Leader>e :CtrlPBufTag<cr>
+nmap <C-m> :CtrlPMRUFiles<cr>
 
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
@@ -215,6 +215,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_blade_checkers = []
 let g:syntastic_html_checkers=['']
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)

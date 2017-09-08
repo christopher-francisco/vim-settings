@@ -188,3 +188,18 @@ class ${2} extends BaseListener
     }
 }
 endsnippet
+
+snippet itest "test"
+<?php
+declare(strict_types=1);
+
+namespace Fcds\IvvyTest${1};
+${2}
+final class ${3}Test extends BaseTestCase
+{
+    public function test${4}()
+    {
+        ${5}
+    }
+}
+endsnippet

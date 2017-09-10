@@ -261,11 +261,11 @@ let g:airline_section_z = airline#section#create(['%3p%%: ', 'linenr', ':%3v'])
 "-------------------- Auto-Commands --------------------
 " Automatically source the .vimrc file on save
 
-"autocmd BufWritePost .vimrc source %
-" augroup autosourcing
-" 	autocmd!
-" 	autocmd BufWritePost .vimrc source %
-" augroup end
+autocmd BufWritePost .vimrc source %
+augroup autosourcing
+	autocmd!
+	autocmd BufWritePost .vimrc source %
+augroup end
 
 
 

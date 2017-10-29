@@ -29,7 +29,6 @@ set background=dark                                     " Set the background to 
 colorscheme solarized                                   " Set the color scheme to altercation/vim-color-solarized
 
 set t_CO=256						" Use 256 colors on terminal Vim
-set guifont=Fira_Code:h14				" Changes the font on Macvim
 set guioptions-=e					" We don't want Gui tabs.
 set guioptions-=l                                       " Disable GUI scrollbars.
 set guioptions-=L
@@ -142,6 +141,11 @@ nmap <Leader>mn yiw:!vendor/bin/phpunit --colors=never --filter "<cr>
 " Run PHPUnit on method when the cursor is on the method body
 nmap <Leader>m va{%k$bbyiw:!vendor/bin/phpunit --colors=never --filter "<cr>
 
+" JSON Pretty print
+" TODO: find a way to map this to an available hotkey
+" :%!python -m json.tool
+
+
 
 
 
@@ -149,12 +153,20 @@ nmap <Leader>m va{%k$bbyiw:!vendor/bin/phpunit --colors=never --filter "<cr>
 "/
 "/ CtrlP
 "/
-let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+" let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+let g:ctrlp_map = '<c-p><c-p>'
+nmap <C-p><C-e> :CtrlPBufTag<cr>
+nmap <C-p><C-m> :CtrlPMRUFiles<cr>
+
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20,results:20'
-
-nmap <Leader>e :CtrlPBufTag<cr>
-nmap <C-m> :CtrlPMRUFiles<cr>
-
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
 
@@ -253,6 +265,18 @@ endfunction
 call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bold'})
 
 let g:airline_section_z = airline#section#create(['%3p%%: ', 'linenr', ':%3v'])
+
+"/
+"/ vim-javascript
+"/
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
+
+"/
+"/ tern_for_vim
+"/
+let g:tern_map_keys=1                                                                         " Enable keyboard shortcuts
+let g:tern_show_argument_hints='on_hold'                                                      " Show argument hints
 
 
 
